@@ -76,7 +76,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent(out LevelEnd end))
             {
-                StartCoroutine(gui.FadeOut(end.newSceneName));
+                StartCoroutine(gui.FadeOut(end.newSceneIndex));
             }
         }
     }

@@ -11,7 +11,7 @@ public class StartController : MonoBehaviour
     [SerializeField] Button exit;
 
     [Header("Scene")]
-    [SerializeField] string startLevel;
+    [SerializeField] int startLevelIndex;
 
     [Header("Blackout")]
     [SerializeField] Image blackout;
@@ -42,6 +42,6 @@ public class StartController : MonoBehaviour
             blackout.color = new Color(0, 0, 0, i);
             yield return null;
         }
-        SceneManager.LoadScene(startLevel);
+        SceneManager.LoadScene(startLevelIndex);
     }
 }

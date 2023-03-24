@@ -9,7 +9,7 @@ public class KeyController : MonoBehaviour
     [SerializeField] Transform resetLocation;
 
     [Header("UI Interactions")]
-    [SerializeField] string newSceneName;
+    [SerializeField] int newSceneIndex;
     [SerializeField] string newString;
     [SerializeField] TooltipType newType;
 
@@ -18,7 +18,7 @@ public class KeyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             LevelEnd end = lockedDoor.AddComponent<LevelEnd>();
-            end.newSceneName = newSceneName;
+            end.newSceneIndex = newSceneIndex;
             TooltipHolder tooltip = lockedDoor.GetComponent<TooltipHolder>();
             tooltip.tooltip = newString;
             tooltip.type = newType;

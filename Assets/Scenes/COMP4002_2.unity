@@ -5981,7 +5981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockedDoor: {fileID: 1422446089}
   resetLocation: {fileID: 1120619634}
-  newSceneName: COMP4002_3
+  newSceneIndex: 3
   newString: Exit
   newType: 0
 --- !u!4 &1317372397 stripped

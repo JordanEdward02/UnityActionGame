@@ -37,7 +37,7 @@ public class PlayerGUI : MonoBehaviour
         }
     }
 
-    public IEnumerator FadeOut(string newScene)
+    public IEnumerator FadeOut(int newScene)
     {
         for (float i = 0; i <= 1; i += Time.deltaTime)
         {

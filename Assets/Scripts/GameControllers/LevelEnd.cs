@@ -5,5 +5,5 @@ using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    public string newSceneName;
+    public int newSceneIndex;
 }
