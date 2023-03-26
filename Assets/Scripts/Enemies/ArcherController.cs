@@ -16,7 +16,7 @@ public class ArcherController : MonoBehaviour
     [Header("Behaviour Parameters")]
     [SerializeField] int sightFov;
     [SerializeField] DoubleWaypoint nextDestination;
-    [SerializeField] int attackSpeed = 5;
+    [SerializeField] int attackDelay = 5;
 
     bool lookingAtPlayer = false;
     float shotTime;
@@ -30,7 +30,7 @@ public class ArcherController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shotTime + attackSpeed < Time.time)
+        if (shotTime + attackDelay < Time.time)
         {
             if (lookingAtPlayer)
             {

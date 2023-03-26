@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
+    bool damaging = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,13 +13,22 @@ public class ArrowController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.name == "BlockCollider")
+        if (damaging)
         {
-            if (gameObject.TryGetComponent(out Rigidbody rb))
+            if (collision.collider.gameObject.name == "BlockCollider")
             {
-                rb.velocity = new Vector3();
-                rb.angularVelocity = new Vector3();
-                rb.AddForce(gameObject.transform.forward * -3f, ForceMode.Impulse);
+                if (gameObject.TryGetComponent(out Rigidbody rb))
+                {
+                    rb.velocity = new Vector3();
+                    rb.angularVelocity = new Vector3();
+                    rb.AddForce(gameObject.transform.forward * -3f, ForceMode.Impulse);
+                }
+                damaging = false;
+            }
+            else if (collision.gameObject.TryGetComponent(out PlayerGUI pGUI))
+            {
+                pGUI.Damage();
+                damaging = false;
             }
         }
     }

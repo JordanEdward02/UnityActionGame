@@ -18,6 +18,7 @@ public class StartController : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         start.onClick.AddListener(StartGame);
         exit.onClick.AddListener(StopGame);
     }

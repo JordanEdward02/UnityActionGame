@@ -69,7 +69,7 @@ public class PlayerGUI : MonoBehaviour
         StartCoroutine(FadeIn());
     }
 
-    public IEnumerator FadeIn()
+    IEnumerator FadeIn()
     {
         for (float i = 1; i >= 0; i -= Time.deltaTime)
         {
@@ -78,10 +78,11 @@ public class PlayerGUI : MonoBehaviour
         }
     }
 
-    public IEnumerator Die()
+    IEnumerator Die()
     {
         for (float i = 0; i <= 1; i += Time.deltaTime)
         {
+            gameObject.transform.Rotate(new Vector3(0,0,-1f));
             blackout.color = new Color(0, 0, 0, i);
             yield return null;
         }
@@ -90,7 +91,7 @@ public class PlayerGUI : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
-    public void DamageBlur()
+    public void Damage()
     {
         if (damageBlur.enabled)
         {
@@ -100,7 +101,7 @@ public class PlayerGUI : MonoBehaviour
         StartCoroutine(DamageFade());
     }
 
-    public IEnumerator DamageFade()
+    IEnumerator DamageFade()
     {
         yield return new WaitForSeconds(3);
         damageBlur.enabled = false;

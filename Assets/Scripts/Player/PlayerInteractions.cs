@@ -70,7 +70,10 @@ public class PlayerInteractions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (escPressed)
-                Application.Quit();
+            {
+                Destroy(gameObject);
+                SceneManager.LoadScene(0);
+            }
             escPressed = true;
             StartCoroutine(ExitGame());
         }
@@ -86,7 +89,7 @@ public class PlayerInteractions : MonoBehaviour
         heldObject.Update();
         heldShield.UpdateShield();
     }
-    public void playerInteract()
+    void playerInteract()
     {
         // Allows the player to interact with the exit level objects.
         RaycastHit hit;
@@ -152,13 +155,15 @@ public class PlayerInteractions : MonoBehaviour
 
     IEnumerator ShowTutotial(GameObject obj)
     {
+        // Shows the given tutorial object for 4 seconds. This displays the tooltip attatched temporarily
         obj.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         obj.SetActive(false);
     }
 
     IEnumerator ExitGame()
     {
+        // Same as ShowTutorial() but handles esc pressed for leaving the game.
         escapeTutorial.SetActive(true);
         yield return new WaitForSeconds(4);
         escapeTutorial.SetActive(false);
