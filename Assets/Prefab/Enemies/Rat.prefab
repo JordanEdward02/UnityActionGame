@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4151278441227570004}
   - component: {fileID: 383930846643386874}
   - component: {fileID: 9175021559838575658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3349023122235190050}
   - component: {fileID: 4465136481510327157}
   - component: {fileID: 71290321866559981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 4541785952247915879}
   - component: {fileID: 2998535505765447507}
   - component: {fileID: 5862634319229707787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 3617205190921622236}
   - component: {fileID: 4734517587018545503}
   - component: {fileID: 622672461327748471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 7717398739127656918}
   - component: {fileID: 6389616271446221301}
   - component: {fileID: 580606773489083598}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 4436029378794416257}
   - component: {fileID: 332156553911773647}
   - component: {fileID: 403768191371977484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 7116666577300377531}
   - component: {fileID: 7848777625168152170}
   - component: {fileID: 2648319330907956434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ear (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1427,7 +1427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 209676553079496988}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 8687157183274696597}
   - component: {fileID: 2714236162717885972}
   - component: {fileID: 4903119941243568152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1541,7 +1541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3146888430045009382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RatBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1578,7 @@ GameObject:
   - component: {fileID: 5743897720649235445}
   - component: {fileID: 7126578446603743975}
   - component: {fileID: 4137555576662372011}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 7833615789245736129}
   - component: {fileID: 1784457057169247267}
   - component: {fileID: 7614906325480272173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2131,7 +2131,7 @@ GameObject:
   - component: {fileID: 3876476062702319209}
   - component: {fileID: 5633987751653538961}
   - component: {fileID: 6575168207919897557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

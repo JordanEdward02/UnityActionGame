@@ -15,10 +15,12 @@ public interface Object
 }
 
 // How the player interacts with object they are currently holding.
+
 public class PlayerObject
 {
     Object currentObject;
     PlayerInteractions parent;
+
 
     public PlayerObject(PlayerInteractions parent)
     {

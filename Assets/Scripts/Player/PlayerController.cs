@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-// Make the player's current direction while in the air slow down over time. This will fix issues with the player getting stuck on the box.
-
 public class PlayerController : MonoBehaviour
 {
     float snapshotForward = 0;
@@ -85,9 +83,12 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
+        // Add enemy into a layer and remove this from the mask, because it allows infinite jumps when in vision.
+
         // Checks if the user is touching the ground or not using an Overlapsphere.
         LayerMask otherLayers = Physics.AllLayers;
         otherLayers &= ~(1 << gameObject.layer);
+        otherLayers &= ~(1 << LayerMask.NameToLayer("Enemy"));
         if (Physics.OverlapSphere(transform.position + new Vector3(0,-1,0), 0.4f, otherLayers).Length > 0)
         {
             return true;

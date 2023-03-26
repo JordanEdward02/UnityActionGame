@@ -17,15 +17,30 @@ public class ArcherController : MonoBehaviour
     [SerializeField] int sightFov;
     [SerializeField] DoubleWaypoint nextDestination;
 
+    bool lookingAtPlayer = false;
+    float shotTime;
+
     NavMeshAgent agent;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        shotTime = Time.time;
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (shotTime + 5 < Time.time)
+        {
+            if (lookingAtPlayer)
+            {
+                GameObject arrow = Instantiate(shot, shotTransform.position, shotTransform.rotation);
+                if (arrow.TryGetComponent(out Rigidbody rb))
+                {
+                    rb.AddForce(shotTransform.forward * 8f, ForceMode.Impulse);
+                }
+                shotTime = Time.time;
+            }
+        }
     }
 
     public void OnTriggerStay(Collider other)
@@ -43,9 +58,16 @@ public class ArcherController : MonoBehaviour
                    GetComponent<SphereCollider>().radius))
                 {
                     head.transform.LookAt(other.transform,Vector3.up);
+                    lookingAtPlayer = true;
                 }
             }
-            
         }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+            lookingAtPlayer = false;
     }
 }

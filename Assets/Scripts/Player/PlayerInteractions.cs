@@ -12,10 +12,20 @@ public class PlayerInteractions : MonoBehaviour
     [Header("Gameplay Objects")]
     [SerializeField] private PlayerGUI gui;
 
+    [Header("Tutorials")]
+    [SerializeField] private GameObject objectTutorial;
+    [SerializeField] private GameObject shieldTutorial;
+    [SerializeField] private GameObject escapeTutorial;
+
     [HideInInspector] public PlayerObject heldObject;
     [HideInInspector] public ShieldObject heldShield;
 
     private float defaultFoV = 70f;
+
+    private bool hasUsedObject = false;
+    private bool hasUsedShield = false;
+
+    private bool escPressed = false;
 
     [HideInInspector] public bool throwing = false;
     [HideInInspector] public float power = 5f;
@@ -51,12 +61,20 @@ public class PlayerInteractions : MonoBehaviour
                 power = 5f;
             }
         }
-
+        gui.SetPowerBar((power - 5) / 15);
         if (heldShield.HoldingShield())
         {
             if (Input.GetMouseButtonDown(1)) heldShield.ToggleBlock();
             if (Input.GetMouseButtonUp(1) && heldShield.IsBlocking()) heldShield.ToggleBlock();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (escPressed)
+                Application.Quit();
+            escPressed = true;
+            StartCoroutine(ExitGame());
+        }
+            
 
         if (Input.GetKey(KeyCode.E))
             playerInteract();
@@ -104,6 +122,11 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     obj.GetComponent<BoxCollider>().enabled = false;
                 }
+                if (!hasUsedObject)
+                {
+                    hasUsedObject = true;
+                    StartCoroutine(ShowTutotial(objectTutorial));
+                }
             }
         }
         else if (obj.TryGetComponent(out Shield shield))
@@ -112,6 +135,12 @@ public class PlayerInteractions : MonoBehaviour
             {
                 Destroy(obj.GetComponent<Rigidbody>());
                 obj.GetComponent<BoxCollider>().enabled = false;
+
+                if (!hasUsedShield)
+                {
+                    hasUsedShield = true;
+                    StartCoroutine(ShowTutotial(shieldTutorial));
+                }
             }
         }
         else if (obj.CompareTag("Collectible"))
@@ -121,4 +150,20 @@ public class PlayerInteractions : MonoBehaviour
             Destroy(obj);
         }
     }
+
+    IEnumerator ShowTutotial(GameObject obj)
+    {
+        obj.SetActive(true);
+        yield return new WaitForSeconds(5);
+        obj.SetActive(false);
+    }
+
+    IEnumerator ExitGame()
+    {
+        escapeTutorial.SetActive(true);
+        yield return new WaitForSeconds(4);
+        escapeTutorial.SetActive(false);
+        escPressed = false;
+    }
+
 }

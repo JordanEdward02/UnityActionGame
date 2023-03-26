@@ -16,7 +16,6 @@ public class StartController : MonoBehaviour
     [Header("Blackout")]
     [SerializeField] Image blackout;
 
-    // Start is called before the first frame update
     void Start()
     {
         start.onClick.AddListener(StartGame);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TooltipType { TOOLTIP, THOUGHT}
+public enum TooltipType { TOOLTIP, THOUGHT, TUTORIAL}
 
 public class TooltipHolder : MonoBehaviour
 {

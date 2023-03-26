@@ -5,13 +5,18 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+// Include a bar indicating the power as you hold down throw. Do this within the PlayerInteractions class and do function calls to enable and progress the bar.
+
 public class PlayerGUI : MonoBehaviour
 {
     [Header("TextFields")]
     [SerializeField] private TextMeshProUGUI toolTip;
     [SerializeField] private TextMeshProUGUI playerThoughts;
+    [SerializeField] private TextMeshProUGUI tutorial;
     [Header("Images")]
     [SerializeField] private Image blackout;
+    [SerializeField] private Image progressBar;
     [SerializeField] public Image collectible;
 
     // Update is called once per frame
@@ -24,17 +29,31 @@ public class PlayerGUI : MonoBehaviour
         {
             if (hit.distance < 4 && hit.collider.gameObject.TryGetComponent(out TooltipHolder tip))
             {
-                if (tip.type == TooltipType.TOOLTIP)
-                    toolTip.SetText(tip.tooltip);
-                else
-                    playerThoughts.SetText(tip.tooltip);
+                switch (tip.type)
+                {
+                    case TooltipType.TOOLTIP:
+                        toolTip.SetText(tip.tooltip);
+                        break;
+                    case TooltipType.THOUGHT:
+                        playerThoughts.SetText(tip.tooltip);
+                        break;
+                    case TooltipType.TUTORIAL:
+                        tutorial.SetText(tip.tooltip);
+                        break;
+                }
             }
             else
             {
                 toolTip.SetText("");
                 playerThoughts.SetText("");
+                tutorial.SetText("");
             }
         }
+    }
+
+    public void SetPowerBar(float val)
+    {
+        progressBar.fillAmount = val;
     }
 
     public IEnumerator FadeOut(int newScene)
@@ -57,5 +76,4 @@ public class PlayerGUI : MonoBehaviour
             yield return null;
         }
     }
-
 }
