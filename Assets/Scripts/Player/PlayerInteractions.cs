@@ -102,9 +102,8 @@ public class PlayerInteractions : MonoBehaviour
     {
         // Tries to pick up an object when we walk on a playerobject.
         // Then removes the rigidbody and colliders to stop them from interacting with the player while being held
-
-        // Ask if there is a better way to do this... Seems bad 
         GameObject obj = collision.gameObject;
+        
         if (obj.GetComponent<Object>() != null)
         {
             if (heldObject.PickUp(obj))

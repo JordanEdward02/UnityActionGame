@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowController : MonoBehaviour, HarmfulObject
+public class ArrowController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -22,18 +22,4 @@ public class ArrowController : MonoBehaviour, HarmfulObject
             }
         }
     }
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))) {
-            if (gameObject.TryGetComponent(out Rigidbody rb)) {
-                Destroy(rb);
-            }
-            if (gameObject.TryGetComponent(out CapsuleCollider col))
-            {
-                Destroy(col);
-            }
-        }
-    }
-    */
 }

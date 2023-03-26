@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brain3 : BrainClass
-{
 
+// This class just makes sure to put the player in the correct location upon starting the level.
+// Other scenes are built to reuse the same 
+
+public class Brain3 : Brain
+{
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +17,5 @@ public class Brain3 : BrainClass
             player.transform.position = playerSpawn.position;
             player.transform.rotation = playerSpawn.rotation;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -17,6 +17,7 @@ public class PlayerGUI : MonoBehaviour
     [Header("Images")]
     [SerializeField] private Image blackout;
     [SerializeField] private Image progressBar;
+    [SerializeField] private Image damageBlur;
     [SerializeField] public Image collectible;
 
     // Update is called once per frame
@@ -75,5 +76,33 @@ public class PlayerGUI : MonoBehaviour
             blackout.color = new Color(0, 0, 0, i);
             yield return null;
         }
+    }
+
+    public IEnumerator Die()
+    {
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            blackout.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+        Scene currentScene = SceneManager.GetActiveScene();
+        Destroy(gameObject);
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void DamageBlur()
+    {
+        if (damageBlur.enabled)
+        {
+            StartCoroutine(Die());
+        }
+        damageBlur.enabled = true;
+        StartCoroutine(DamageFade());
+    }
+
+    public IEnumerator DamageFade()
+    {
+        yield return new WaitForSeconds(3);
+        damageBlur.enabled = false;
     }
 }
