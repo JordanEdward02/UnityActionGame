@@ -65,4 +65,9 @@ public class BombController : MonoBehaviour, Object
         Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
+
+    public GameObject GetObject()
+    {
+        return gameObject;
+    }
 }

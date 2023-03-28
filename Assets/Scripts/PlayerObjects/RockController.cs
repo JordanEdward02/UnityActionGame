@@ -80,4 +80,8 @@ public class RockController : MonoBehaviour, Object
         // Will tell the spawner the object is destroyed if this function is set
         CustomDestroy?.Invoke();
     }
+    public GameObject GetObject()
+    {
+        return gameObject;
+    }
 }

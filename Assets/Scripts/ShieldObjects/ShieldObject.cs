@@ -13,7 +13,7 @@ public interface Shield
     void UpdateShield(PlayerInteractions player);
     // Throws the shield
     void Use(PlayerInteractions player, float power);
-    GameObject getObject();
+    GameObject GetShield();
 }
 
 public class ShieldObject
@@ -70,6 +70,6 @@ public class ShieldObject
 
     public void Destroy()
     {
-        if (shield != null) GameObject.Destroy(shield);
+        if (shield != null) GameObject.Destroy(shield.GetShield());
     }
 }

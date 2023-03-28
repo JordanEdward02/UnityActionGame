@@ -88,4 +88,8 @@ public class ShieldController : MonoBehaviour, Shield
             gameObject.GetComponent<Rigidbody>().angularVelocity = new Vector3();
         }
     }
+    public GameObject GetShield()
+    {
+        return gameObject;
+    }
 }
