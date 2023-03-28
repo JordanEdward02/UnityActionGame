@@ -82,6 +82,13 @@ public class RockController : MonoBehaviour, Object
     }
     public GameObject GetObject()
     {
-        return gameObject;
+        try
+        {
+            return gameObject;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

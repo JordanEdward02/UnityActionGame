@@ -4478,9 +4478,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8218956851994090870, guid: 32be75344da6baa47a1ddd327d2cad2a, type: 3}
   playerSpawn: {fileID: 1912516160}
+  itemToMonitor: {fileID: 1411457473}
   guardPrefab: {fileID: 7669345610513569787, guid: 45b63410d32e468428b757d3b52ea80d, type: 3}
-  guardSpawn: {fileID: 0}
-  shield: {fileID: 1411457473}
+  guardSpawn: {fileID: 384964193}
+  explosionPrefab: {fileID: 3498685436919252939, guid: f01c4fce0543482409513dc7ea669b82, type: 3}
+  lockedDoor: {fileID: 98636675}
+  newSceneIndex: 4
+  newString: Exit
+  newType: 0
 --- !u!1001 &1496411120
 PrefabInstance:
   m_ObjectHideFlags: 0

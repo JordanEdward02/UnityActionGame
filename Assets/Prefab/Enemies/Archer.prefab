@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7569287170439466183}
   - component: {fileID: 1179183253754221535}
   - component: {fileID: 4626895518196954432}
-  - component: {fileID: 7222023794014989779}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7222023794014989779
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4200102466566146502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7000848211226506001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1111,8 @@ GameObject:
   - component: {fileID: 8262496126259971987}
   - component: {fileID: 8843383675461677762}
   - component: {fileID: 4323554191645577569}
+  - component: {fileID: 5758736661152290149}
+  - component: {fileID: 512213981737683367}
   m_Layer: 6
   m_Name: Archer
   m_TagString: Untagged
@@ -1166,6 +1153,7 @@ MonoBehaviour:
   head: {fileID: 8015470316486503729}
   sightFov: 360
   nextDestination: {fileID: 0}
+  attackDelay: 5
 --- !u!135 &4323554191645577569
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1179,6 +1167,34 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5758736661152290149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669345610513569787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cddca5f31c01cf4e87e9204499a8c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 2
+  hitDelay: 3
+--- !u!136 &512213981737683367
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669345610513569787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8015470316486503729
 GameObject:
   m_ObjectHideFlags: 0

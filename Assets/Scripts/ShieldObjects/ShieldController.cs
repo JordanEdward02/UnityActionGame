@@ -90,6 +90,13 @@ public class ShieldController : MonoBehaviour, Shield
     }
     public GameObject GetShield()
     {
-        return gameObject;
+        try
+        {
+            return gameObject;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }
