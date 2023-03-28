@@ -170,4 +170,9 @@ public class PlayerInteractions : MonoBehaviour
         escPressed = false;
     }
 
+    private void OnDestroy()
+    {
+        heldObject.Destroy();
+        heldShield.Destroy();
+    }
 }

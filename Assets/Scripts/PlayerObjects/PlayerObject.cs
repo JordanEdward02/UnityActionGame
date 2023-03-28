@@ -12,6 +12,8 @@ public interface Object
 
     //Moves the object to the player
     void UpdateObject(PlayerInteractions parent);
+
+    GameObject getObject();
 }
 
 // How the player interacts with object they are currently holding.
@@ -70,5 +72,11 @@ public class PlayerObject
     public void Update()
     {
         if (currentObject != null) currentObject.UpdateObject(parent);
+    }
+
+    public void Destroy()
+    {
+
+        if (currentObject != null) GameObject.Destroy(currentObject);
     }
 }

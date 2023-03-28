@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShieldController : MonoBehaviour, Shield
 {
@@ -40,6 +41,7 @@ public class ShieldController : MonoBehaviour, Shield
         parent.blockCollider.enabled = false;
         parent.heldShield.ShieldDisconnect();
         blocking = false;
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
     }
 
     public void Drop()
