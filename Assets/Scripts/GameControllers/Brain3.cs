@@ -62,7 +62,7 @@ public class Brain3 : Brain
     IEnumerator SpawnGuard()
     {
         yield return new WaitForSeconds(3);
-        Instantiate(explosionPrefab, guardSpawn.localPosition, guardSpawn.rotation);
+        Instantiate(explosionPrefab, guardSpawn.localPosition + new Vector3(0,0,-0.8f), guardSpawn.rotation);
         yield return new WaitForSeconds(1);
         spawnedGuard = Instantiate(guardPrefab, guardSpawn.localPosition, guardSpawn.rotation);
         guardSpawned = true;

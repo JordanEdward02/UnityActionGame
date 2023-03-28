@@ -74,13 +74,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
     }
 
-    public void FixedUpdate()
-    {
-        // Every fixed update slow down the movement of the player's jump slightly to prevent them getting stuck in boxes and stuff
-        snapshotForward *= 0.99f;
-        snapshotSideways *= 0.99f;
-    }
-
     public bool IsGrounded()
     {
         // Add enemy into a layer and remove this from the mask, because it allows infinite jumps when in vision.
