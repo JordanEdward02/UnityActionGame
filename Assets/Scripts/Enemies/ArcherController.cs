@@ -11,6 +11,7 @@ public class ArcherController : MonoBehaviour
 
     [Header("Enemy Objects")]
     [SerializeField] Transform shotTransform;
+    [SerializeField] GameObject head;
 
     [Header("Behaviour Parameters")]
     [SerializeField] int sightFov;
@@ -54,7 +55,7 @@ public class ArcherController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Vector3 direction = other.transform.position - transform.position;
+            Vector3 direction = other.transform.position - head.transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
             if (angle < sightFov * 0.5f)
             {
@@ -64,6 +65,7 @@ public class ArcherController : MonoBehaviour
                    out hit,
                    GetComponent<SphereCollider>().radius))
                 {
+                    head.transform.LookAt(other.transform, Vector3.up);
                     lookingAtPlayer = true;
                     seenLocation = Vector3.zero;
                     agent.destination = transform.position;
