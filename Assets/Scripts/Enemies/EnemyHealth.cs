@@ -34,7 +34,17 @@ public class EnemyHealth : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
         {
             takeDamage();
+            if (TryGetComponent(out SphereCollider col))
+            {
+                col.radius = 15;
+                StartCoroutine(NormaliseViewDistance(col));
+            }
         }
     }
 
+    IEnumerator NormaliseViewDistance(SphereCollider col)
+    {
+        yield return new WaitForSeconds(3);
+        col.radius = 9;
+    }
 }

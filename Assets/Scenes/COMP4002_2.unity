@@ -2551,6 +2551,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576276480}
     m_Modifications:
+    - target: {fileID: 2507752948059880121, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
+      propertyPath: lockedDoor
+      value: 
+      objectReference: {fileID: 1422446089}
+    - target: {fileID: 2507752948059880121, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
+      propertyPath: resetLocation
+      value: 
+      objectReference: {fileID: 1120619634}
     - target: {fileID: 9040354092579221342, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
       propertyPath: m_Name
       value: Key
@@ -5980,33 +5988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c136b93440e134eb65c82bc6417f6a, type: 3}
---- !u!1 &1317372389 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9040354092579221342, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
-  m_PrefabInstance: {fileID: 304189863}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &1317372390 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5480930828286582326, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
   m_PrefabInstance: {fileID: 304189863}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1317372394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317372389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e01a355d9c14c4184945b4a55e5768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockedDoor: {fileID: 1422446089}
-  resetLocation: {fileID: 1120619634}
-  newSceneIndex: 3
-  newString: Exit
-  newType: 0
 --- !u!4 &1317372397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9163146582142252843, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
@@ -9406,7 +9392,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh57644
+  m_Name: pb_Mesh36234
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

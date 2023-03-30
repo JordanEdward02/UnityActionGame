@@ -11,14 +11,13 @@ public class ArcherController : MonoBehaviour
 
     [Header("Enemy Objects")]
     [SerializeField] Transform shotTransform;
-    [SerializeField] GameObject head;
 
     [Header("Behaviour Parameters")]
     [SerializeField] int sightFov;
-    [SerializeField] DoubleWaypoint nextDestination;
     [SerializeField] int attackDelay = 5;
 
     bool lookingAtPlayer = false;
+    Vector3 seenLocation;
     float shotTime;
 
     NavMeshAgent agent;
@@ -42,13 +41,20 @@ public class ArcherController : MonoBehaviour
                 shotTime = Time.time;
             }
         }
+        if (!lookingAtPlayer && !agent.pathPending)
+        {
+            if (seenLocation != Vector3.zero)
+            {
+                agent.destination = seenLocation;
+            }
+        }
     }
 
     public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Vector3 direction = other.transform.position - head.transform.position;
+            Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
             if (angle < sightFov * 0.5f)
             {
@@ -58,8 +64,9 @@ public class ArcherController : MonoBehaviour
                    out hit,
                    GetComponent<SphereCollider>().radius))
                 {
-                    head.transform.LookAt(other.transform,Vector3.up);
                     lookingAtPlayer = true;
+                    seenLocation = Vector3.zero;
+                    agent.destination = transform.position;
                 }
             }
         }
@@ -69,6 +76,9 @@ public class ArcherController : MonoBehaviour
     {
 
         if (other.CompareTag("Player"))
+        {
             lookingAtPlayer = false;
+            seenLocation = other.transform.position;
+        }
     }
 }

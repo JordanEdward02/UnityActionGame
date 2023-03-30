@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/COMP4002_3.unity
     guid: 9a1079112e670b140a2c5e732d15a761
+  - enabled: 1
+    path: Assets/Scenes/COMP4002_4.unity
+    guid: 92cd1db2e12eaad4f94d0737997175c9
   m_configObjects: {}
