@@ -7,6 +7,7 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Object")]
     [SerializeField] private GameObject objectToSpawn;
     [SerializeField] private int maxNumberOfObjects;
+    [SerializeField] private Vector3 newScale = new Vector3(1,1,1);
 
     private List<GameObject> currentObjects = new();
     
@@ -25,8 +26,8 @@ public class ObjectSpawner : MonoBehaviour
             if (obj.TryGetComponent(out StoolController stoolController))
             {
                 obj.GetComponent<StoolController>().CustomDestroy += () => currentObjects.Remove(obj);
-                obj.transform.localScale *= 2f;
             }
+            obj.transform.localScale = newScale;
             currentObjects.Add(obj);
         }
     }
