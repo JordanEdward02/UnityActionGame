@@ -76,6 +76,7 @@ public class PlayerObject
 
     public void Destroy()
     {
-        if (currentObject.GetObject() != null) GameObject.Destroy(currentObject.GetObject());
+        if (currentObject.GetObject() != null) 
+            GameObject.Destroy(currentObject.GetObject());
     }
 }

@@ -22,8 +22,8 @@ public class PlayerInteractions : MonoBehaviour
 
     private float defaultFoV = 70f;
 
-    private bool hasUsedObject = false;
-    private bool hasUsedShield = false;
+    static private bool hasUsedObject = false;
+    static private bool hasUsedShield = false;
 
     private bool escPressed = false;
 
