@@ -574,6 +574,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 53465607}
     m_Modifications:
     - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
       propertyPath: objectToSpawn
       value: 
       objectReference: {fileID: 1156470949020172, guid: b2637965017297d4d8e24833154b2e3b, type: 3}
@@ -642,7 +654,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48986
+  m_Name: pb_Mesh55452
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1829,7 +1841,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41918
+  m_Name: pb_Mesh-51118
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1995,6 +2007,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 53465607}
     m_Modifications:
     - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
       propertyPath: objectToSpawn
       value: 
       objectReference: {fileID: 1156470949020172, guid: b2637965017297d4d8e24833154b2e3b, type: 3}
@@ -2004,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 180450149291646356, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 180450149291646356, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2577,7 +2601,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41866
+  m_Name: pb_Mesh-51066
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2806,7 +2830,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48826
+  m_Name: pb_Mesh61876
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2990,7 +3014,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41942
+  m_Name: pb_Mesh-51142
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3725,6 +3749,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1210211096}
     m_Modifications:
     - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
       propertyPath: objectToSpawn
       value: 
       objectReference: {fileID: 1156470949020172, guid: b2637965017297d4d8e24833154b2e3b, type: 3}
@@ -3793,7 +3829,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41930
+  m_Name: pb_Mesh-51130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4353,8 +4389,8 @@ Transform:
   - {fileID: 790095096}
   - {fileID: 234463576}
   - {fileID: 218682550}
-  - {fileID: 1091175256}
   - {fileID: 2028886344}
+  - {fileID: 1091175256}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5740,6 +5776,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1210211096}
     m_Modifications:
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
+      propertyPath: newScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: -2500312791154187620, guid: 45cc0defdbf1f184abdba860618c8a20, type: 3}
       propertyPath: objectToSpawn
       value: 
