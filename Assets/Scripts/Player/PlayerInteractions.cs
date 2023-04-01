@@ -123,6 +123,7 @@ public class PlayerInteractions : MonoBehaviour
                 else if (obj.GetComponent<DefaultObjectController>())
                 {
                     obj.GetComponent<BoxCollider>().enabled = false;
+                    if (obj.name == "Candle(Clone)") obj.GetComponentsInChildren<ParticleSystem>()[0].Play();
                 }
                 if (!hasUsedObject)
                 {

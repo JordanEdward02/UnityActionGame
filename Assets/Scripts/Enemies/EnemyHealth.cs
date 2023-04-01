@@ -24,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
+            StartCoroutine(DamageFlash());
             hitTime = Time.time;
         }
     }
@@ -46,5 +47,24 @@ public class EnemyHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         col.radius = 9;
+    }
+
+    IEnumerator DamageFlash()
+    {
+        MeshRenderer rend = gameObject.GetComponentInChildren<MeshRenderer>();
+        for (float i = 0; i <= 0.5; i += Time.deltaTime)
+        {
+            Color col = rend.material.color;
+            col.a -= i*100;
+            rend.material.color = col;
+            yield return null;
+        }
+        for (float i = 0; i <= 0.5; i += Time.deltaTime)
+        {
+            Color col = rend.material.color;
+            col.a += i*100;
+            rend.material.color = col;
+            yield return null;
+        }
     }
 }
