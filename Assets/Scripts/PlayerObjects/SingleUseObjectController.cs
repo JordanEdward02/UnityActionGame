@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockController : MonoBehaviour, Object
+
+// Single use objects should have Sphere Colliders, otherwise additional behaviour needs adding to the PlayerInteractions class
+// to remove the collider upon collision to pick up the object
+public class SingleUseObjectController : MonoBehaviour, Object
 {
     public ParticleSystem BreakEffect;
     public GameObject RockBody;

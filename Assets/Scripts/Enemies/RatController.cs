@@ -76,7 +76,7 @@ public class RatController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.TryGetComponent(out ShieldController shield))
+        if (obj.TryGetComponent(out DefaultShieldController shield))
         {
             carryingObject = shield.gameObject;
             Destroy(obj.GetComponent<Rigidbody>());
@@ -85,14 +85,16 @@ public class RatController : MonoBehaviour
                 box.enabled = false;
             }
         }
-        if (obj.TryGetComponent(out StoolController stool) && carryingObject != null)
+    }
+    private void OnDestroy()
+    {
+        if (carryingObject != null)
         {
-            carryingObject.AddComponent<Rigidbody>();
-            if (carryingObject.TryGetComponent(out BoxCollider box))
-            {
-                box.enabled = true;
-            }
-            Destroy(gameObject);
+        carryingObject.AddComponent<Rigidbody>();
+        if (carryingObject.TryGetComponent(out BoxCollider box))
+        {
+            box.enabled = true;
+        }
         }
     }
 }

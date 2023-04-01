@@ -19,16 +19,37 @@ public class ObjectSpawner : MonoBehaviour
             GameObject obj = Instantiate(objectToSpawn, transform.position, transform.rotation);
             // Lamba function that will remove the object from the list if it is destoryed, so that we spawn a new one. This is called in the object OnDestory.
             // See RockController for more.
-            if (obj.TryGetComponent(out RockController rockController))
+            if (obj.TryGetComponent(out SingleUseObjectController rockController))
             {
-                obj.GetComponent<RockController>().CustomDestroy += () => currentObjects.Remove(obj);
+                obj.GetComponent<SingleUseObjectController>().CustomDestroy += () => currentObjects.Remove(obj);
             }
-            if (obj.TryGetComponent(out StoolController stoolController))
+            if (obj.TryGetComponent(out DefaultObjectController stoolController))
             {
-                obj.GetComponent<StoolController>().CustomDestroy += () => currentObjects.Remove(obj);
+                obj.GetComponent<DefaultObjectController>().CustomDestroy += () => currentObjects.Remove(obj);
             }
             obj.transform.localScale = newScale;
             currentObjects.Add(obj);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        switch (objectToSpawn.name)
+        {
+            case "Candle":
+                Gizmos.DrawWireCube(transform.position, new Vector3(0.25f, 0.5f, 0.25f));
+                break;
+            case "Rock":
+                Gizmos.DrawWireSphere(transform.position, 0.2f);
+                break;
+            case "Shield_01":
+                Gizmos.DrawWireCube(transform.position, new Vector3(0.7f, 0.7f, 0.08f));
+                break;
+            case "Stool_01":
+                Gizmos.DrawWireCube(transform.position, new Vector3(0.45f, 0.6f, 0.45f));
+                break;
+
         }
     }
 }

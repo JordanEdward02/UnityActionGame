@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7574974020191666938}
   - component: {fileID: 5426259508865132421}
   - component: {fileID: 927010857140375294}
-  - component: {fileID: -7138042515401734898}
+  - component: {fileID: 5300156841298143376}
   m_Layer: 8
   m_Name: Rock
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7138042515401734898
+--- !u!114 &5300156841298143376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5296396737602402692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9d96f3a174977408bf9725b1ba4065, type: 3}
+  m_Script: {fileID: 11500000, guid: 39874e40d753b384e9b999ce86fee738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BreakEffect: {fileID: 8866916147661535912}

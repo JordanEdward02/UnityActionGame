@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ShieldController : MonoBehaviour, Shield
+public class DefaultShieldController : MonoBehaviour, Shield
 {
     bool blocking = false;
     Quaternion idleRotation = new Quaternion(0f, -0.5f, 0f, 1f);
@@ -83,6 +83,8 @@ public class ShieldController : MonoBehaviour, Shield
         // Respawn when the shield falls out the map. Replace this with return to player after given time
         if (transform.position.y < -10.0)
         {
+            if (returnPoint == null)
+                return;
             transform.position = returnPoint.position;
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3();
             gameObject.GetComponent<Rigidbody>().angularVelocity = new Vector3();

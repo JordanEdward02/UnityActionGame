@@ -70,6 +70,10 @@ public class ShieldObject
 
     public void Destroy()
     {
-        if (shield.GetShield() != null) GameObject.Destroy(shield.GetShield());
+        try
+        {
+            if (shield.GetShield() != null) GameObject.Destroy(shield.GetShield());
+        }
+        catch { return; }
     }
 }

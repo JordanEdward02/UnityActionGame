@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StoolController : MonoBehaviour, Object
+// Default objects should use box colliders. To change this add the additional colliders as options in the PlayerInteractions class
+public class DefaultObjectController : MonoBehaviour, Object
 {
 
     [HideInInspector] public event System.Action CustomDestroy;

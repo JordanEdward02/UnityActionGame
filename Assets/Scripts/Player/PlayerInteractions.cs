@@ -116,11 +116,11 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     obj.GetComponent<SphereCollider>().enabled = false;
                 }
-                else if (obj.GetComponent<RockController>())
+                else if (obj.GetComponent<SingleUseObjectController>())
                 {
                     obj.GetComponent<SphereCollider>().enabled = false;
                 }
-                else if (obj.GetComponent<StoolController>())
+                else if (obj.GetComponent<DefaultObjectController>())
                 {
                     obj.GetComponent<BoxCollider>().enabled = false;
                 }

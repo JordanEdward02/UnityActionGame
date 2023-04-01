@@ -30,6 +30,7 @@ public class ArrowController : MonoBehaviour
                 pGUI.Damage();
                 damaging = false;
             }
+            Destroy(gameObject);
         }
     }
 }
