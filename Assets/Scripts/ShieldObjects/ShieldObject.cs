@@ -7,8 +7,6 @@ public interface Shield
 {
     bool CanBePicked();
     // Toggles if the user is blocking with the shield
-    void ToggleBlock();
-    bool IsBlocking();
     // Moves the shield to the player's location
     void UpdateShield(PlayerInteractions player);
     // Throws the shield
@@ -47,17 +45,6 @@ public class ShieldObject
         if (shield != null) shield.Use(parent,power);
     }
 
-    public void ToggleBlock()
-    {
-        if (shield != null) shield.ToggleBlock();
-    }
-
-    public bool IsBlocking()
-    {
-        if (shield != null)
-            return shield.IsBlocking();
-        return false;
-    }
     public bool HoldingShield()
     {
         return shield != null;

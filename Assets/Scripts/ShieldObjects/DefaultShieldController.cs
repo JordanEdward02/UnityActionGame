@@ -5,22 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class DefaultShieldController : MonoBehaviour, Shield
 {
-    bool blocking = false;
     Quaternion idleRotation = new Quaternion(0f, -0.5f, 0f, 1f);
 
     [SerializeField] private Transform returnPoint;
 
-    public bool IsBlocking()
-    {
-        return blocking;
-    }
     public bool CanBePicked()
     {
         return true;
-    }
-    public void ToggleBlock()
-    {
-        blocking = !blocking;
     }
 
     public void Use(PlayerInteractions parent, float power)
@@ -38,9 +29,7 @@ public class DefaultShieldController : MonoBehaviour, Shield
         }
         rb.AddForce(transform.forward * power, ForceMode.Impulse);
         gameObject.transform.Rotate(new Vector3(-90, 0, 0));
-        parent.blockCollider.enabled = false;
         parent.heldShield.ShieldDisconnect();
-        blocking = false;
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
     }
 
@@ -53,7 +42,6 @@ public class DefaultShieldController : MonoBehaviour, Shield
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
-        blocking = false;
 
     }
 
@@ -62,11 +50,9 @@ public class DefaultShieldController : MonoBehaviour, Shield
         // Moves the object into the player's view. Also controls the interactions such as the throw and block and detaches is from the player.
         Vector3 parentPos = parent.objectTransform.position;
         Quaternion parentRot = parent.objectTransform.rotation;
-        parent.blockCollider.enabled = false;
-        if (blocking)
+        if (parent.blocking)
         {
             // Enables the box collider in front of the player to stop the player being hit from the front when blocking.
-            parent.blockCollider.enabled = true;
             transform.position = parentPos + parent.objectTransform.up * 0.3f;
             transform.rotation = parentRot;
         }

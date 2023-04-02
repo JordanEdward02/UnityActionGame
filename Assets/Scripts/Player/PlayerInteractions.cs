@@ -7,7 +7,6 @@ public class PlayerInteractions : MonoBehaviour
 {
     [Header("Player Objects")]
     public Transform objectTransform;
-    public BoxCollider blockCollider;
 
     [Header("Gameplay Objects")]
     [SerializeField] private PlayerGUI gui;
@@ -19,6 +18,7 @@ public class PlayerInteractions : MonoBehaviour
 
     [HideInInspector] public PlayerObject heldObject;
     [HideInInspector] public ShieldObject heldShield;
+    [HideInInspector] public bool blocking = false;
 
     private float defaultFoV = 70f;
 
@@ -64,8 +64,8 @@ public class PlayerInteractions : MonoBehaviour
         gui.SetPowerBar((power - 5) / 15);
         if (heldShield.HoldingShield())
         {
-            if (Input.GetMouseButtonDown(1)) heldShield.ToggleBlock();
-            if (Input.GetMouseButtonUp(1) && heldShield.IsBlocking()) heldShield.ToggleBlock();
+            if (Input.GetMouseButtonDown(1)) blocking = true;
+            if (Input.GetMouseButtonUp(1)) blocking = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -175,5 +175,14 @@ public class PlayerInteractions : MonoBehaviour
     {
         heldObject.Destroy();
         heldShield.Destroy();
+    }
+
+    // If the player is blocking then they don't take damage, otherwise they do. Uses dot product to find out if the item is in front of the player
+    public void Hit(Transform hitLocation)
+    {
+        float angle = Vector3.Dot(transform.forward.normalized, hitLocation.forward.normalized);
+        if (angle < -0.3 && blocking)
+            return;
+        gui.Damage();
     }
 }

@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             moveVelocity = snapshotRotation * new Vector3(snapshotSideways, 0, snapshotForward) + transform.rotation * new Vector3(speedSideways/10, 0, speedForward/10);
             
         }
-        if (playerInteractions.throwing || playerInteractions.heldShield.IsBlocking())
+        if (playerInteractions.throwing || playerInteractions.blocking)
         {
             moveVelocity *= 0.2f;
         }

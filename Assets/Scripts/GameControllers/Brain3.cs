@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-// This class just makes sure to put the player in the correct location upon starting the level.
-// Other scenes are built to reuse the same 
-
 // Shield is not spawned in with a spawner for this room so we can monitor it's presence in the scene
 
 public class Brain3 : Brain
