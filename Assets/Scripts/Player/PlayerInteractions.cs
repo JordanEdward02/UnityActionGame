@@ -56,7 +56,10 @@ public class PlayerInteractions : MonoBehaviour
                 if (heldObject.HoldingObject())
                     heldObject.Use(power);
                 else
+                {
                     heldShield.Use(power);
+                    blocking = false;
+                }
                 Camera.main.fieldOfView = defaultFoV;
                 power = 5f;
             }

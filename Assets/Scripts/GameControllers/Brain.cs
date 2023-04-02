@@ -20,4 +20,15 @@ public class Brain : MonoBehaviour
             player.transform.rotation = playerSpawn.rotation;
         }
     }
+
+    private void Update()
+    {
+        GameObject player = GameObject.Find("Player(Clone)");
+        if (player != null)
+            if (player.transform.position.y < -10f)
+            {
+                player.transform.position = playerSpawn.position;
+                player.transform.rotation = playerSpawn.rotation;
+            }
+    }
 }

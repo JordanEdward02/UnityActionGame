@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int hitPoints = 2;
-    [SerializeField] float hitDelay = 1;
+    [SerializeField] float hitDelay = 0.5f;
+    [SerializeField] ParticleSystem damageAffect;
 
     float hitTime;
 
     public void Start()
     {
-        hitTime = Time.time;
+        hitTime = Time.time - hitDelay;
     }
 
     public void takeDamage()
@@ -51,20 +52,7 @@ public class EnemyHealth : MonoBehaviour
     // Currently not working, look into changing this to play a single loop animation for getting hit instead.
     IEnumerator DamageFlash()
     {
-        MeshRenderer rend = gameObject.GetComponentInChildren<MeshRenderer>();
-        for (float i = 0; i <= 0.5; i += Time.deltaTime)
-        {
-            Color col = rend.material.color;
-            col.a -= i*100;
-            rend.material.color = col;
-            yield return null;
-        }
-        for (float i = 0; i <= 0.5; i += Time.deltaTime)
-        {
-            Color col = rend.material.color;
-            col.a += i*100;
-            rend.material.color = col;
-            yield return null;
-        }
+        if (damageAffect != null) damageAffect.Play();
+        yield return new WaitForSeconds(0.5f);
     }
 }

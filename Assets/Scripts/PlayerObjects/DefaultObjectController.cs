@@ -10,9 +10,11 @@ public class DefaultObjectController : MonoBehaviour, Object
     [HideInInspector] public event System.Action CustomDestroy;
     Quaternion idleRotation = new Quaternion(0f, 0.5f, 0f, 1f);
 
+    bool pickable = true;
+
     public bool CanBePicked()
     {
-        return true;
+        return pickable;
     }
 
     public void Use(PlayerInteractions parent, float power)
@@ -34,6 +36,7 @@ public class DefaultObjectController : MonoBehaviour, Object
         if (gameObject.name == "Candle(Clone)")
         {
             Destroy(gameObject, 10f);
+            pickable = false;
         }
     }
 
