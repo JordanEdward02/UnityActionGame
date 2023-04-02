@@ -14,7 +14,6 @@ public class EnemyHealth : MonoBehaviour
         hitTime = Time.time;
     }
 
-    // ADD IN A VISUAL WHEN THE ENEMY TAKES DAMAGE, LIKE A RED FLASH ON THEM OR SOMETHING
     public void takeDamage()
     {
         if (Time.time > hitTime + hitDelay)
@@ -49,6 +48,7 @@ public class EnemyHealth : MonoBehaviour
         col.radius = 9;
     }
 
+    // Currently not working, look into changing this to play a single loop animation for getting hit instead.
     IEnumerator DamageFlash()
     {
         MeshRenderer rend = gameObject.GetComponentInChildren<MeshRenderer>();

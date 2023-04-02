@@ -31,6 +31,10 @@ public class DefaultObjectController : MonoBehaviour, Object
         gameObject.transform.Rotate(new Vector3(90, 0, 0));
         parent.heldObject.ObjectDisconnect();
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        if (gameObject.name == "Candle(Clone)")
+        {
+            Destroy(gameObject, 10f);
+        }
     }
 
     public void Drop()

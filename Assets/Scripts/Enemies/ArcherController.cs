@@ -38,7 +38,7 @@ public class ArcherController : MonoBehaviour
                 GameObject arrow = Instantiate(shot, shotTransform.position, shotTransform.rotation);
                 if (arrow.TryGetComponent(out Rigidbody rb))
                 {
-                    rb.AddForce(shotTransform.forward * 8f, ForceMode.Impulse);
+                    rb.AddForce(shotTransform.forward * 12f, ForceMode.Impulse);
                 }
                 shotTime = Time.time;
             }
@@ -50,6 +50,8 @@ public class ArcherController : MonoBehaviour
                 agent.destination = seenLocation;
             }
         }
+        if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 1f)
+            head.transform.LookAt(seenLocation, Vector3.up);
     }
 
     public void OnTriggerStay(Collider other)
@@ -69,10 +71,6 @@ public class ArcherController : MonoBehaviour
                out hit,
                FoVRange))
             {
-                // Shot doesn't look like it's going to hit the player because it is relative to the crossbow not the front of the player head
-                // Look at changing the lookAt to just be the crossbow and therefore the shotTransform
-                // Then make the whole enemy rotate to centre the player if within teh FOV.
-                // Check progression of this using the Gizmos, as the behaviour RN is a little odd.
                 head.transform.LookAt(Camera.main.transform, Vector3.up);
                 lookingAtPlayer = true;
                 seenLocation = Vector3.zero;

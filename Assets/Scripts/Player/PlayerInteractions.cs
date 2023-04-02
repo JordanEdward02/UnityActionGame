@@ -81,8 +81,6 @@ public class PlayerInteractions : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
             playerInteract();
-        if (Input.GetKey(KeyCode.F))
-            heldObject.Drop();
     }
     void FixedUpdate()
     {
@@ -123,7 +121,9 @@ public class PlayerInteractions : MonoBehaviour
                 else if (obj.GetComponent<DefaultObjectController>())
                 {
                     obj.GetComponent<BoxCollider>().enabled = false;
-                    if (obj.name == "Candle(Clone)") obj.GetComponentsInChildren<ParticleSystem>()[0].Play();
+                    if (obj.name == "Candle(Clone)") { 
+                        obj.GetComponentsInChildren<ParticleSystem>()[0].Play();
+                    }
                 }
                 if (!hasUsedObject)
                 {

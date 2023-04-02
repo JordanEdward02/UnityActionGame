@@ -103,7 +103,7 @@ public class PlayerGUI : MonoBehaviour
 
     IEnumerator DamageFade()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         damageBlur.enabled = false;
     }
 }
