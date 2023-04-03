@@ -17,6 +17,9 @@ public class ArcherController : MonoBehaviour
     [SerializeField] int sightFov = 120;
     [SerializeField] float attackDelay = 5;
 
+
+    [HideInInspector] public event System.Action CustomDestroy;
+
     bool lookingAtPlayer = false;
     bool engaged = false;
     float shotTime;
@@ -51,7 +54,7 @@ public class ArcherController : MonoBehaviour
                 agent.destination = seenLocation;
             }
         }
-        if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 1f)
+        if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
             head.transform.LookAt(seenLocation, Vector3.up);
     }
 
@@ -112,5 +115,10 @@ public class ArcherController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, 15);
         }
+    }
+
+    private void OnDestroy()
+    {
+        CustomDestroy?.Invoke();
     }
 }
