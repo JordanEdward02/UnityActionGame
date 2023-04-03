@@ -22,10 +22,12 @@ public class ObjectSpawner : MonoBehaviour
             if (obj.TryGetComponent(out SingleUseObjectController rockController))
             {
                 obj.GetComponent<SingleUseObjectController>().CustomDestroy += () => currentObjects.Remove(obj);
+                obj.hideFlags = HideFlags.HideInHierarchy;
             }
             if (obj.TryGetComponent(out DefaultObjectController stoolController))
             {
                 obj.GetComponent<DefaultObjectController>().CustomDestroy += () => currentObjects.Remove(obj);
+                obj.hideFlags = HideFlags.HideInHierarchy;
             }
             if (obj.TryGetComponent(out DefaultShieldController shield))
             {
