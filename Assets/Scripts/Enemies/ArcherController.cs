@@ -19,8 +19,9 @@ public class ArcherController : MonoBehaviour
 
     bool lookingAtPlayer = false;
     bool engaged = false;
-    Vector3 seenLocation;
     float shotTime;
+
+    [HideInInspector] public Vector3 seenLocation;
 
     NavMeshAgent agent;
     private void Start()
