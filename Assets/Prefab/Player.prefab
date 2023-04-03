@@ -1031,8 +1031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e569b20b7a6dba4a970f96bb0ffeef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 4
-  walkSpeed: 6
+  jumpHeight: 3
+  walkSpeed: 5
   mouseSensitivity: 2
   playerInteractions: {fileID: 6549930951029853037}
 --- !u!54 &6671325101373021682

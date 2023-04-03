@@ -35,7 +35,7 @@ public class DefaultObjectController : MonoBehaviour, Object
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
         if (gameObject.name == "Candle(Clone)")
         {
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, 3f);
             pickable = false;
         }
     }

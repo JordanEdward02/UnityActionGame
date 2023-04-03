@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     Quaternion snapshotRotation = new Quaternion();
 
     [Header("Movement")]
-    [SerializeField] private float jumpHeight = 5;
-    [SerializeField] private float walkSpeed = 6;
+    [SerializeField] private float jumpHeight = 4;
+    [SerializeField] private float walkSpeed = 4;
     [SerializeField] private float mouseSensitivity = 2;
 
     [Header("Player Parts")]

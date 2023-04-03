@@ -27,6 +27,10 @@ public class ObjectSpawner : MonoBehaviour
             {
                 obj.GetComponent<DefaultObjectController>().CustomDestroy += () => currentObjects.Remove(obj);
             }
+            if (obj.TryGetComponent(out DefaultShieldController shield))
+            {
+                shield.returnPoint = transform;
+            }
             obj.transform.localScale = newScale;
             currentObjects.Add(obj);
         }

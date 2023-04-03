@@ -7,7 +7,7 @@ public class DefaultShieldController : MonoBehaviour, Shield
 {
     Quaternion idleRotation = new Quaternion(0f, -0.5f, 0f, 1f);
 
-    [SerializeField] private Transform returnPoint;
+    [HideInInspector] public Transform returnPoint;
 
     public bool CanBePicked()
     {
