@@ -21,6 +21,8 @@ public class EnemyHealth : MonoBehaviour
         {
             if (--hitPoints <= 0)
             {
+                if (gameObject.TryGetComponent(out LootDropper loot))
+                    loot.DropAllLoot();
                 Destroy(gameObject);
                 return;
             }
@@ -31,8 +33,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If the enemy is hit with anything other than the player running into it, so either a thrown object or a deflected harmful object
-        if (!collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.layer == 8)
         {
             takeDamage();
             if (TryGetComponent(out SphereCollider col))

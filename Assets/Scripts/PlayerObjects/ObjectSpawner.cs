@@ -41,6 +41,8 @@ public class ObjectSpawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
+        if (objectToSpawn == null)
+            return;
         switch (objectToSpawn.name)
         {
             case "Candle":

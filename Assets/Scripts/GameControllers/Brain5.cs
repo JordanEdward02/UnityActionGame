@@ -3,22 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Need to assign the key to one of the player objects after a number of the archers are killed.
-// Also add all of the throwable objects to the scene. Like rocks on the floor, sticks/stumps
 public class Brain5 : Brain
 {
     int archerCount = 0;
     int killedArchers = 0;
 
+    [Header("KeyDrop")]
+    [SerializeField] private GameObject keyPrefab;
+    [SerializeField] private int killsRequiredForKeySpawn;
+
+    private bool keySpawned = false;
+
+
     private void Update()
     {
-        int newCount = FindObjectsOfType<ArcherController>().Length;
+        ArcherController[] Archers = FindObjectsOfType<ArcherController>();
+        int newCount = Archers.Length;
         if (newCount > archerCount)
             archerCount = newCount;
         if (newCount < archerCount)
         {
             ++killedArchers;
+            Debug.Log("Killed Archers: " + killedArchers);
             archerCount = newCount;
+        }
+
+
+        // Adds the key to a random archer once enough have been killed
+        if (!keySpawned && killedArchers > killsRequiredForKeySpawn)
+        {
+            keySpawned = true;
+            ArcherController Archer = Archers[Random.Range(0, Archers.Length - 1)];
+            LootDropper loot = Archer.gameObject.AddComponent<LootDropper>();
+            loot.AddLoot(keyPrefab);
+            Archer.lootShine.Play();
         }
     }
 }

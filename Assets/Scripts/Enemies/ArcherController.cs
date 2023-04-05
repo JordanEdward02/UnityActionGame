@@ -16,6 +16,7 @@ public class ArcherController : MonoBehaviour
     [Header("Behaviour Parameters")]
     [SerializeField] int sightFov = 120;
     [SerializeField] float attackDelay = 5;
+    public ParticleSystem lootShine;  
 
 
     [HideInInspector] public event System.Action CustomDestroy;

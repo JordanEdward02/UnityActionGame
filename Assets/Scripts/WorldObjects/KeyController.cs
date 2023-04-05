@@ -13,6 +13,11 @@ public class KeyController : MonoBehaviour
     [SerializeField] string newString;
     [SerializeField] TooltipType newType;
 
+    private void Start()
+    {
+        resetLocation = transform;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

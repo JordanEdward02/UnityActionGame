@@ -82,7 +82,8 @@ public class PlayerGUI : MonoBehaviour
     {
         for (float i = 0; i <= 1; i += Time.deltaTime)
         {
-            gameObject.transform.Rotate(new Vector3(0,0,-1f));
+            if (transform.rotation.z > -0.17)
+                transform.Rotate(new Vector3(0,0,-1f));
             blackout.color = new Color(0, 0, 0, i);
             yield return null;
         }

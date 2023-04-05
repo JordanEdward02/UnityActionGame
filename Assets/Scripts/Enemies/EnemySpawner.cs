@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (currentObjects.Count < spawnCount && Time.time > previousSpawn + spawnDelay)
         {
-            SpawnEnemy();
+            StartCoroutine(SpawnEnemy());
             previousSpawn = Time.time;
         }
     }
@@ -45,15 +45,17 @@ public class EnemySpawner : MonoBehaviour
         Gizmos.DrawWireCube(patrolRegionCentre, patrolRegionSize);
     }
 
-    void SpawnEnemy()
+    IEnumerator SpawnEnemy()
     {
-        Vector3 spawnLocation = new Vector3(spawnRegionCentre.x + Random.Range(-spawnRegionSize.x/2, spawnRegionSize.x/2), 0, spawnRegionCentre.z + Random.Range(-spawnRegionSize.z/2, spawnRegionSize.z/2));
+        yield return new WaitForSeconds(1);
+        Vector3 spawnLocation = new Vector3(spawnRegionCentre.x + Random.Range(-spawnRegionSize.x / 2, spawnRegionSize.x / 2), 0, spawnRegionCentre.z + Random.Range(-spawnRegionSize.z / 2, spawnRegionSize.z / 2));
         GameObject enemy = Instantiate(enemyToSpawn, spawnLocation, transform.rotation);
         if (enemy.TryGetComponent(out ArcherController archer))
         {
-            archer.seenLocation = new Vector3(patrolRegionCentre.x + Random.Range(-patrolRegionSize.x / 2, patrolRegionSize.x/2), 0, patrolRegionCentre.z + Random.Range(-patrolRegionSize.z / 2, patrolRegionSize.z/2));
-            archer.CustomDestroy += ()=>{ currentObjects.Remove(enemy); };
+            archer.seenLocation = new Vector3(patrolRegionCentre.x + Random.Range(-patrolRegionSize.x / 2, patrolRegionSize.x / 2), 0, patrolRegionCentre.z + Random.Range(-patrolRegionSize.z / 2, patrolRegionSize.z / 2));
+            archer.CustomDestroy += () => { currentObjects.Remove(enemy); };
         }
         currentObjects.Add(enemy);
     }
+
 }

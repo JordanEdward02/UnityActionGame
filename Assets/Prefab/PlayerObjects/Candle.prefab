@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1805064779246445168}
   - component: {fileID: 2357438280689596421}
   - component: {fileID: 4187514645429203315}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8759099462878292016}
   - component: {fileID: 7073876145899443020}
   - component: {fileID: 2334543103864272833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5460692508446772113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Whick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 2779999895307358596}
   - component: {fileID: 1253341382351918570}
   - component: {fileID: 3804443091979333988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Candle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 2109019203634603056}
   - component: {fileID: 2483205054643583312}
   - component: {fileID: 751670373254820577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5099,7 +5099,7 @@ GameObject:
   - component: {fileID: 4215956817750571229}
   - component: {fileID: 2240953891127403600}
   - component: {fileID: 8374022292398895331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
