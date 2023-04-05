@@ -12,6 +12,12 @@ public class Brain5 : Brain
     [SerializeField] private GameObject keyPrefab;
     [SerializeField] private int killsRequiredForKeySpawn;
 
+    [Header("Key Parameters")]
+    [SerializeField] GameObject exitDoor;
+    [SerializeField] int newScene;
+    [SerializeField] string newString;
+    [SerializeField] TooltipType newType;
+
     private bool keySpawned = false;
 
 
@@ -35,8 +41,13 @@ public class Brain5 : Brain
             keySpawned = true;
             ArcherController Archer = Archers[Random.Range(0, Archers.Length - 1)];
             LootDropper loot = Archer.gameObject.AddComponent<LootDropper>();
-            loot.AddLoot(keyPrefab);
-            Archer.lootShine.Play();
+            GameObject key = keyPrefab;
+            if (key.TryGetComponent(out KeyController keyController))
+                if (keyController.SetVariables(exitDoor, transform, newScene, newString, newType))
+                {
+                    loot.AddLoot(keyPrefab);
+                    Archer.lootShine.Play();
+                }
         }
     }
 }

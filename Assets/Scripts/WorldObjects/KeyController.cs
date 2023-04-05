@@ -42,4 +42,21 @@ public class KeyController : MonoBehaviour
             rb.angularVelocity = new Vector3();
         }
     }
+
+    public bool SetVariables(GameObject door, Transform reset, int scene, string str, TooltipType type)
+    {
+        try
+        {
+            lockedDoor = door;
+            resetLocation = reset;
+            newSceneIndex = scene;
+            newString = str;
+            newType = type;
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }

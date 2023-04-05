@@ -18,7 +18,7 @@ public class ArcherController : MonoBehaviour
     [SerializeField] float attackDelay = 5;
     public ParticleSystem lootShine;  
 
-
+     
     [HideInInspector] public event System.Action CustomDestroy;
 
     bool lookingAtPlayer = false;
@@ -33,7 +33,7 @@ public class ArcherController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         shotTime = Time.time;
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (shotTime + attackDelay < Time.time)
@@ -48,6 +48,7 @@ public class ArcherController : MonoBehaviour
                 shotTime = Time.time;
             }
         }
+        // If not looking/attacking the player, goes to where they were last seen
         if (!lookingAtPlayer && !agent.pathPending)
         {
             if (seenLocation != Vector3.zero)
@@ -55,7 +56,8 @@ public class ArcherController : MonoBehaviour
                 agent.destination = seenLocation;
             }
         }
-        if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
+        // When we are walking towards the last seen location, align the position of the enemy head.
+        if (!lookingAtPlayer && seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
             head.transform.LookAt(seenLocation, Vector3.up);
     }
 
@@ -96,6 +98,12 @@ public class ArcherController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        CustomDestroy?.Invoke();
+    }
+
+
     public void OnDrawGizmos()
     {
         if (GetComponent<SphereCollider>() != null)
@@ -118,8 +126,4 @@ public class ArcherController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        CustomDestroy?.Invoke();
-    }
 }
