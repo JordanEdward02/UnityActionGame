@@ -53,21 +53,21 @@ public class ArcherController : MonoBehaviour
         if (!lookingAtPlayer)
         {
             if (!agent.pathPending)
-            {
                 if (seenLocation != Vector3.zero)
-                {
                     agent.destination = seenLocation;
-                }
-            }
 
             // When walking towards the last seen location, align the position of the enemy head.
             if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
-                head.transform.LookAt(seenLocation, Vector3.up);
+            {
+                Vector3 headForward = seenLocation;
+                headForward.y = 2;
+                head.transform.LookAt(headForward, Vector3.up);
+            }
 
             // If not moving, the enemy looks around
             if (agent.velocity == Vector3.zero)
             {
-                head.transform.Rotate(new Vector3(0, (idleLookAround.Evaluate(Time.time)-0.5f)*3f,0));
+                head.transform.Rotate(new Vector3(0, (idleLookAround.Evaluate(Time.time) - 0.5f) * 3f, 0));
             }
         }
     }
