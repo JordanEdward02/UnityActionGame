@@ -16,7 +16,8 @@ public class ArcherController : MonoBehaviour
     [Header("Behaviour Parameters")]
     [SerializeField] int sightFov = 120;
     [SerializeField] float attackDelay = 5;
-    public ParticleSystem lootShine;  
+    [SerializeField] AnimationCurve idleLookAround;
+    public ParticleSystem lootShine;
 
      
     [HideInInspector] public event System.Action CustomDestroy;
@@ -49,16 +50,26 @@ public class ArcherController : MonoBehaviour
             }
         }
         // If not looking/attacking the player, goes to where they were last seen
-        if (!lookingAtPlayer && !agent.pathPending)
+        if (!lookingAtPlayer)
         {
-            if (seenLocation != Vector3.zero)
+            if (!agent.pathPending)
             {
-                agent.destination = seenLocation;
+                if (seenLocation != Vector3.zero)
+                {
+                    agent.destination = seenLocation;
+                }
+            }
+
+            // When walking towards the last seen location, align the position of the enemy head.
+            if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
+                head.transform.LookAt(seenLocation, Vector3.up);
+
+            // If not moving, the enemy looks around
+            if (agent.velocity == Vector3.zero)
+            {
+                head.transform.Rotate(new Vector3(0, (idleLookAround.Evaluate(Time.time)-0.5f)*3f,0));
             }
         }
-        // When we are walking towards the last seen location, align the position of the enemy head.
-        if (!lookingAtPlayer && seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
-            head.transform.LookAt(seenLocation, Vector3.up);
     }
 
     public void OnTriggerStay(Collider other)
@@ -117,8 +128,8 @@ public class ArcherController : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, GetComponent<SphereCollider>().radius);
             Quaternion fov = Quaternion.AngleAxis(sightFov * 0.5f, Vector3.up);
             Quaternion fovneg = Quaternion.AngleAxis(sightFov * -0.5f, Vector3.up);
-            Gizmos.DrawLine(transform.position, fov * (GetComponent<SphereCollider>().radius * transform.forward) + transform.position);
-            Gizmos.DrawLine(transform.position, fovneg * (GetComponent<SphereCollider>().radius * transform.forward) + transform.position);
+            Gizmos.DrawLine(transform.position, fov * (GetComponent<SphereCollider>().radius * head.transform.forward) + transform.position);
+            Gizmos.DrawLine(transform.position, fovneg * (GetComponent<SphereCollider>().radius * head.transform.forward) + transform.position);
 
             // When hit alert range
             Gizmos.color = Color.red;
