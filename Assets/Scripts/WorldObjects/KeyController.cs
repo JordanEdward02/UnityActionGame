@@ -17,8 +17,21 @@ public class KeyController : MonoBehaviour
     {
         if (resetLocation == null)
         {
-            GameObject location = Instantiate(new GameObject("KeyResetTransform"), transform.position, transform.rotation);
+            GameObject location = new GameObject("KeyResetTransform");
+            location.transform.position = transform.position;
+            location.transform.rotation = transform.rotation;
             resetLocation = location.transform;
+            LayerMask ground = Physics.AllLayers;
+            ground &= ~(1 << LayerMask.GetMask("Enemy"));
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position,
+               -transform.up,
+               out hit,
+               10f, 
+               ground))
+            {
+                location.transform.position = hit.point;
+            }
         }
     }
 

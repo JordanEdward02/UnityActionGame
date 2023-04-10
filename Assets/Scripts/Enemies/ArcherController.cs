@@ -89,11 +89,14 @@ public class ArcherController : MonoBehaviour
                out hit,
                FoVRange))
             {
-                head.transform.LookAt(Camera.main.transform, Vector3.up);
-                lookingAtPlayer = true;
-                seenLocation = Vector3.zero;
-                agent.destination = transform.position;
-                engaged = true;
+                if (hit.collider.gameObject.CompareTag("Player"))
+                {
+                    head.transform.LookAt(Camera.main.transform, Vector3.up);
+                    lookingAtPlayer = true;
+                    seenLocation = Vector3.zero;
+                    agent.destination = transform.position;
+                    engaged = true;
+                }
             }
         }
     }

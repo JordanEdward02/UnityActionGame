@@ -44,7 +44,7 @@ public class Brain5 : Brain
             if (key.TryGetComponent(out KeyController keyController))
                 if (keyController.SetVariables(exitDoor, newScene, newString, newType))
                 {
-                    key.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    key.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     loot.AddLoot(key);
                     Archer.lootShine.Play();
                 }
