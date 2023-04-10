@@ -15,7 +15,11 @@ public class KeyController : MonoBehaviour
 
     private void Start()
     {
-        resetLocation = transform;
+        if (resetLocation == null)
+        {
+            GameObject location = Instantiate(new GameObject("KeyResetTransform"), transform.position, transform.rotation);
+            resetLocation = location.transform;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,12 +47,11 @@ public class KeyController : MonoBehaviour
         }
     }
 
-    public bool SetVariables(GameObject door, Transform reset, int scene, string str, TooltipType type)
+    public bool SetVariables(GameObject door, int scene, string str, TooltipType type)
     {
         try
         {
             lockedDoor = door;
-            resetLocation = reset;
             newSceneIndex = scene;
             newString = str;
             newType = type;

@@ -30,7 +30,6 @@ public class Brain5 : Brain
         if (newCount < archerCount)
         {
             ++killedArchers;
-            Debug.Log("Killed Archers: " + killedArchers);
             archerCount = newCount;
         }
 
@@ -43,9 +42,10 @@ public class Brain5 : Brain
             LootDropper loot = Archer.gameObject.AddComponent<LootDropper>();
             GameObject key = keyPrefab;
             if (key.TryGetComponent(out KeyController keyController))
-                if (keyController.SetVariables(exitDoor, transform, newScene, newString, newType))
+                if (keyController.SetVariables(exitDoor, newScene, newString, newType))
                 {
-                    loot.AddLoot(keyPrefab);
+                    key.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    loot.AddLoot(key);
                     Archer.lootShine.Play();
                 }
         }

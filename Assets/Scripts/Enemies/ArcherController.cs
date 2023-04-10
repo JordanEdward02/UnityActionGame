@@ -78,7 +78,7 @@ public class ArcherController : MonoBehaviour
         {
             lookingAtPlayer = false;
             Vector3 direction = other.transform.position - head.transform.position;
-            float angle = Vector3.Angle(direction, transform.forward);
+            float angle = Vector3.Angle(direction, head.transform.forward);
             // If the player is not within the sight, the enemy attention is half as effective.
             float FoVRange = GetComponent<SphereCollider>().radius;
             if (angle > sightFov * 0.5f && !engaged)
