@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int hitPoints = 2;
+    [SerializeField] public int hitPoints = 2;
     [SerializeField] float hitDelay = 0.5f;
     [SerializeField] ParticleSystem damageAffect;
 
     float hitTime;
+
+    [HideInInspector] public bool customDeath = false;
 
     public void Start()
     {
@@ -21,6 +23,8 @@ public class EnemyHealth : MonoBehaviour
         {
             if (--hitPoints <= 0)
             {
+                if (customDeath)
+                    return;
                 if (gameObject.TryGetComponent(out LootDropper loot))
                     loot.DropAllLoot();
                 Destroy(gameObject);

@@ -36,6 +36,7 @@ public class DragonController : MonoBehaviour
 
     float lastFire;
 
+    EnemyHealth health;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,8 @@ public class DragonController : MonoBehaviour
         lastFire = Time.time - fireDelay;
         anim.SetFloat(animationDuration, 2/attackDuration); // 2 is the actual duration in seconds of the animation
         StartCoroutine(WakeUp());
+        health = GetComponent<EnemyHealth>();
+        health.customDeath = true;
     }
 
     // Update is called once per frame
@@ -56,6 +59,13 @@ public class DragonController : MonoBehaviour
         if (target == null)
             if (!(target = GameObject.Find("Player(Clone)")))
                 return;
+        if (health.hitPoints <= 0)
+        {
+            anim.SetBool(deadKey, true);
+            agent.destination = transform.position;
+            Destroy(this);
+            return;
+        }
 
         // If the player is too far away, navAgent towards them
         if (!inRange)
@@ -72,13 +82,14 @@ public class DragonController : MonoBehaviour
             // If we are within range but not looking at the player, try to rotate towards them
             Vector3 direction = target.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
-            if (angle > 3 || angle  < -3)
+            if (Mathf.Abs(angle) > 3)
             {
                 walking = true;
                 Quaternion toRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 3 * Time.deltaTime);
             }
             else
+            {
                 walking = false;
                 // if criteria are met, start an attack. No other actions can occur, other than death, during the attack
                 if (Time.time > previousAttack + attackDelay)
@@ -86,12 +97,12 @@ public class DragonController : MonoBehaviour
                     agent.destination = transform.position;
                     StartCoroutine(BreathFire());
                 }
+            }
         }
 
 
         anim.SetBool(walkingKey, walking);
         anim.SetBool(attackingKey, attacking);
-        anim.SetBool(deadKey, dead);
     }
 
     private void FixedUpdate()
@@ -104,7 +115,7 @@ public class DragonController : MonoBehaviour
             Fire.transform.parent = flamesGroup.transform;
             if (Fire.TryGetComponent(out Rigidbody rb))
             {
-                rb.AddForce(fireSpawn.forward * 15f, ForceMode.Impulse);
+                rb.AddForce(fireSpawn.forward*0.1f, ForceMode.Impulse);
             }
         }
     }
