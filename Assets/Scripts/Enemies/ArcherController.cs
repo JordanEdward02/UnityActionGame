@@ -16,6 +16,7 @@ public class ArcherController : MonoBehaviour
     [Header("Behaviour Parameters")]
     [SerializeField] int sightFov = 120;
     [SerializeField] float attackDelay = 5;
+    [SerializeField] float shotSpeed = 3f;
     [SerializeField] AnimationCurve idleLookAround;
     public ParticleSystem lootShine;
 
@@ -44,7 +45,7 @@ public class ArcherController : MonoBehaviour
                 GameObject arrow = Instantiate(shot, shotTransform.position, shotTransform.rotation);
                 if (arrow.TryGetComponent(out Rigidbody rb))
                 {
-                    rb.AddForce(shotTransform.forward * 3f, ForceMode.Impulse);
+                    rb.AddForce(shotTransform.forward * shotSpeed, ForceMode.Impulse);
                 }
                 shotTime = Time.time;
             }
