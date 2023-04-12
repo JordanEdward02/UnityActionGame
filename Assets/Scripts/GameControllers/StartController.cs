@@ -26,6 +26,7 @@ public class StartController : MonoBehaviour
 
     void StartGame()
     {
+        CreditsController.startTime = Time.time;
         blackout.transform.SetSiblingIndex(4);
         StartCoroutine(FadeOut());
     }

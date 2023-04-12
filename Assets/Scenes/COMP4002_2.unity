@@ -2592,6 +2592,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1422446089}
     - target: {fileID: 2507752948059880121, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
+      propertyPath: newSceneIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507752948059880121, guid: 0f7fbc8338e95e7489e66dcf29280d7a, type: 3}
       propertyPath: resetLocation
       value: 
       objectReference: {fileID: 1120619634}
@@ -9652,7 +9656,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh57660
+  m_Name: pb_Mesh57618
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
