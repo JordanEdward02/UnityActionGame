@@ -21,6 +21,9 @@ public class StartController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         start.onClick.AddListener(StartGame);
         exit.onClick.AddListener(StopGame);
+        PlayerInteractions.hasUsedObject = false;
+        PlayerInteractions.hasUsedShield = false;
+        PlayerInteractions.hasUsedMovement = false;
     }
 
 

@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] public int hitPoints = 2;
     [SerializeField] float hitDelay = 0.5f;
+    [Header("Aesthetics")]
     [SerializeField] ParticleSystem damageAffect;
 
     float hitTime;

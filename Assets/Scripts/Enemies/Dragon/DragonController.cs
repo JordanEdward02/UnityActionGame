@@ -26,6 +26,7 @@ public class DragonController : MonoBehaviour
     [SerializeField] Transform fireSpawn;
     [SerializeField] GameObject firePrefab;
     [SerializeField] GameObject flamesGroup;
+    [SerializeField] AudioSource attackSound;
 
     bool inRange = false;
     float previousAttack;
@@ -76,6 +77,10 @@ public class DragonController : MonoBehaviour
             }
             walking = true;
         }
+        else
+        {
+            agent.destination = transform.position;
+        }
 
         if (inRange && !attacking)
         {
@@ -94,7 +99,6 @@ public class DragonController : MonoBehaviour
                 // if criteria are met, start an attack. No other actions can occur, other than death, during the attack
                 if (Time.time > previousAttack + attackDelay)
                 {
-                    agent.destination = transform.position;
                     StartCoroutine(BreathFire());
                 }
             }
@@ -135,6 +139,7 @@ public class DragonController : MonoBehaviour
     {
         lastFire = Time.time + 0.5f;
         attacking = true;
+        if (gameObject!= null && attackSound != null) attackSound.Play();
         yield return new WaitForSeconds(attackDuration);
         attacking = false;
         previousAttack = Time.time;

@@ -7,6 +7,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     [Header("Player Objects")]
     public Transform objectTransform;
+    [SerializeField] AudioSource damageSound;
 
     [Header("Gameplay Objects")]
     [SerializeField] private PlayerGUI gui;
@@ -15,6 +16,7 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] private GameObject objectTutorial;
     [SerializeField] private GameObject shieldTutorial;
     [SerializeField] private GameObject escapeTutorial;
+    [SerializeField] private GameObject movementTutorial;
 
     [HideInInspector] public PlayerObject heldObject;
     [HideInInspector] public ShieldObject heldShield;
@@ -22,8 +24,9 @@ public class PlayerInteractions : MonoBehaviour
 
     private float defaultFoV = 70f;
 
-    static private bool hasUsedObject = false;
-    static private bool hasUsedShield = false;
+    [HideInInspector] static public bool hasUsedObject = false;
+    [HideInInspector] static public bool hasUsedShield = false;
+    [HideInInspector] static public bool hasUsedMovement = false;
 
     private bool escPressed = false;
 
@@ -34,6 +37,11 @@ public class PlayerInteractions : MonoBehaviour
     {
         heldObject = new PlayerObject(this);
         heldShield = new ShieldObject(this);
+        if (!hasUsedMovement)
+        {
+            hasUsedMovement = true;
+            StartCoroutine(ShowTutotial(movementTutorial));
+        }
     }
 
     void Update()
@@ -158,7 +166,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         // Shows the given tutorial object for 4 seconds. This displays the tooltip attatched temporarily
         obj.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         obj.SetActive(false);
     }
 
@@ -183,6 +191,7 @@ public class PlayerInteractions : MonoBehaviour
         float angle = Vector3.Dot(transform.forward.normalized, hitLocation.forward.normalized);
         if (angle < -0.3 && blocking)
             return;
+        if (damageSound != null) damageSound.Play();
         gui.Damage();
     }
 }

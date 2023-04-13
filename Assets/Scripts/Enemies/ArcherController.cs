@@ -9,11 +9,12 @@ public class ArcherController : MonoBehaviour
     [Header("Ammo")]
     [SerializeField] GameObject shot;
 
-    [Header("Enemy Objects")]
+    [Header("Components")]
     [SerializeField] Transform shotTransform;
     [SerializeField] GameObject head;
+    [SerializeField] AudioSource shotSound;
 
-    [Header("Behaviour Parameters")]
+    [Header("Behaviour")]
     [SerializeField] int sightFov = 120;
     [SerializeField] float attackDelay = 5;
     [SerializeField] float shotSpeed = 3f;
@@ -42,6 +43,7 @@ public class ArcherController : MonoBehaviour
         {
             if (lookingAtPlayer)
             {
+                shotSound.Play();
                 GameObject arrow = Instantiate(shot, shotTransform.position, shotTransform.rotation);
                 if (arrow.TryGetComponent(out Rigidbody rb))
                 {
