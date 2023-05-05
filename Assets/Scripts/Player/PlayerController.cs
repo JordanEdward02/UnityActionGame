@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Parts")]
     [SerializeField] private PlayerInteractions playerInteractions;
+    [SerializeField] private GameObject pauseMenu;
 
     private Rigidbody rb;
     // Start is called before the first frame update
@@ -31,6 +32,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pauseMenu.activeSelf == true)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         // Camera conrtols with mouse. Move whole player in horizontal and just camera in verticle (for collisions)
         float rotationX = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(0, rotationX, 0);

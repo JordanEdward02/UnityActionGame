@@ -17,7 +17,7 @@ public class SingleUseObjectController : MonoBehaviour, Object
 
     public bool CanBePicked()
     {
-        return true;
+        return !thrown;
     }
     public void Use(PlayerInteractions parent, float power)
     {

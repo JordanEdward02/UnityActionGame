@@ -13,6 +13,7 @@ public class DragonController : MonoBehaviour
     int attackingKey = Animator.StringToHash("attacking");
     int deadKey = Animator.StringToHash("dead");
     int walkingKey = Animator.StringToHash("walking");
+    int pushKey = Animator.StringToHash("push");
     int animationDuration = Animator.StringToHash("attackAnimationMultiplier");
 
     Animator anim;
@@ -68,6 +69,17 @@ public class DragonController : MonoBehaviour
             return;
         }
 
+        // Push the player away when they are too close
+        if (Vector3.Distance(transform.position, target.transform.position) < 20)
+        {
+            anim.SetBool(pushKey, true);
+            Vector3 pushDirection = Vector3.Scale((target.transform.position- transform.position),new Vector3(1,0,1));
+            target.GetComponent<Rigidbody>().AddForce(pushDirection.normalized*120f);
+        }
+        else
+        {
+            anim.SetBool(pushKey, false);
+        }
         // If the player is too far away, navAgent towards them
         if (!inRange)
         {

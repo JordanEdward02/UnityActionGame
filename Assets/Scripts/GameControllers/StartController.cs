@@ -9,6 +9,7 @@ public class StartController : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] Button start;
     [SerializeField] Button exit;
+    [SerializeField] Toggle aimArc;
 
     [Header("Scene")]
     [SerializeField] int startLevelIndex;
@@ -24,12 +25,20 @@ public class StartController : MonoBehaviour
         PlayerInteractions.hasUsedObject = false;
         PlayerInteractions.hasUsedShield = false;
         PlayerInteractions.hasUsedMovement = false;
+        if (PlayerInteractions.showArc == true)
+        {
+            aimArc.isOn = true;
+        }
     }
 
 
     void StartGame()
     {
         CreditsController.startTime = Time.time;
+        if (aimArc.isOn)
+        {
+            PlayerInteractions.showArc = true;
+        }
         blackout.transform.SetSiblingIndex(4);
         StartCoroutine(FadeOut());
     }

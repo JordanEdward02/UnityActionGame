@@ -63,7 +63,6 @@ public class ArcherController : MonoBehaviour
             if (seenLocation != Vector3.zero && Vector3.Distance(transform.position, seenLocation) > 5f)
             {
                 Vector3 headForward = seenLocation;
-                headForward.y = 2;
                 head.transform.LookAt(headForward, Vector3.up);
             }
 

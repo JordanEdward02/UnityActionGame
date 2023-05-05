@@ -11,12 +11,13 @@ public class PlayerInteractions : MonoBehaviour
 
     [Header("Gameplay Objects")]
     [SerializeField] private PlayerGUI gui;
+    [SerializeField] private LineRenderer throwArc;
 
     [Header("Tutorials")]
     [SerializeField] private GameObject objectTutorial;
     [SerializeField] private GameObject shieldTutorial;
-    [SerializeField] private GameObject escapeTutorial;
     [SerializeField] private GameObject movementTutorial;
+    [SerializeField] private GameObject pauseMenu;
 
     [HideInInspector] public PlayerObject heldObject;
     [HideInInspector] public ShieldObject heldShield;
@@ -28,10 +29,9 @@ public class PlayerInteractions : MonoBehaviour
     [HideInInspector] static public bool hasUsedShield = false;
     [HideInInspector] static public bool hasUsedMovement = false;
 
-    private bool escPressed = false;
-
     [HideInInspector] public bool throwing = false;
     [HideInInspector] public float power = 5f;
+    [HideInInspector] static public bool showArc = false;
 
     void Start()
     {
@@ -42,10 +42,12 @@ public class PlayerInteractions : MonoBehaviour
             hasUsedMovement = true;
             StartCoroutine(ShowTutotial(movementTutorial));
         }
+        throwArc.numCapVertices = 5;
     }
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         // Controls for object interactions with mouse buttons
         if (Input.GetMouseButton(0) && (heldObject.HoldingObject() || heldShield.HoldingShield()))
         {
@@ -54,10 +56,23 @@ public class PlayerInteractions : MonoBehaviour
             {
                 power += 10f*Time.deltaTime;
             }
+            // Draw in a line for the throwing arc. This should use the built in gravity, plus the power of the inpulse
+            Vector3 force = Camera.main.transform.forward * power *1.1f;
+            if (showArc)
+            {
+                throwArc.positionCount = 20;
+                int i = 0;
+                for (float t = 0; t < 2.0; t += 0.1f)
+                {
+                    throwArc.SetPosition(i, Camera.main.transform.position + force * t + Physics.gravity * t * t * 0.5f + (Camera.main.transform.right * 0.2f) + (Camera.main.transform.forward));
+                    ++i;
+                }
+            }
             Camera.main.fieldOfView = defaultFoV - (power-5f);
         }
         else
         {
+            throwArc.positionCount = 0;
             if (throwing)
             {
                 throwing = false;
@@ -77,13 +92,9 @@ public class PlayerInteractions : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (escPressed)
-            {
-                Destroy(gameObject);
-                SceneManager.LoadScene(0);
-            }
-            escPressed = true;
-            StartCoroutine(ExitGame());
+            pauseMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.Confined;
+            Time.timeScale = 0f;
         }
             
 
@@ -118,11 +129,7 @@ public class PlayerInteractions : MonoBehaviour
             if (heldObject.PickUp(obj))
             {
                 Destroy(obj.GetComponent<Rigidbody>());
-                if (obj.GetComponent<BombController>())
-                {
-                    obj.GetComponent<SphereCollider>().enabled = false;
-                }
-                else if (obj.GetComponent<SingleUseObjectController>())
+                if (obj.GetComponent<SingleUseObjectController>())
                 {
                     obj.GetComponent<SphereCollider>().enabled = false;
                 }
@@ -168,15 +175,6 @@ public class PlayerInteractions : MonoBehaviour
         obj.SetActive(true);
         yield return new WaitForSeconds(3);
         obj.SetActive(false);
-    }
-
-    IEnumerator ExitGame()
-    {
-        // Same as ShowTutorial() but handles esc pressed for leaving the game.
-        escapeTutorial.SetActive(true);
-        yield return new WaitForSeconds(4);
-        escapeTutorial.SetActive(false);
-        escPressed = false;
     }
 
     private void OnDestroy()

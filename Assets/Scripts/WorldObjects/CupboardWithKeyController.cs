@@ -11,7 +11,7 @@ public class CupboardWithKeyController : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out DefaultObjectController stool))
+        if (collision.gameObject.TryGetComponent(out DefaultObjectController obj))
         {
             if (itemToPush != null)
             {
